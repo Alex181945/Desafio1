@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
@@ -8,9 +9,19 @@ app.set('view engine', 'ejs');
 // Middleware para servir archivos estáticos
 app.use(express.static('public'));
 
+// Middleware para parsear el cuerpo de las solicitudes
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Ruta para la vista de login
 app.get('/login', (req, res) => {
   res.render('login');
+});
+
+// Ruta para manejar el formulario de login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  // Aquí puedes agregar la lógica de autenticación
+  res.send(`Usuario: ${username}, Contraseña: ${password}`);
 });
 
 // Ruta para el API Rest
