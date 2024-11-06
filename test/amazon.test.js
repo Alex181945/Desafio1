@@ -16,8 +16,8 @@ afterAll(async () => {
   await browser.close();
 });
 
-describe('Pruebas de Amazon', () => {
-  it('Debe hacer clic en el enlace y verificar la imagen de Tienda de accesorios', async () => {
+describe('Amazon Tests', () => {
+  it('Should click on the link and verify the Accessories Store image', async () => {
     // Hacer clic en el elemento con la clase especificada
     await page.waitForSelector('img[alt="Accesorios"]');
 
@@ -36,7 +36,8 @@ describe('Pruebas de Amazon', () => {
     });
     expect(h2).not.toBeNull();
   });
-  it('Debe hacer clic en el enlace de Amazon Prime usando un selector CSS', async () => {
+
+  it('Should click on the Amazon Prime link using a CSS selector', async () => {
     // Esperar a que el enlace de Ofertas esté presente y hacer clic en él usando un selector CSS
     await page.waitForSelector('a[href="/ref=nav_logo"]');
     await page.click('a[href="/ref=nav_logo"]');
@@ -44,12 +45,12 @@ describe('Pruebas de Amazon', () => {
     // Esperar a que la navegación se complete
     await page.waitForSelector('img[alt="Accesorios"]');
 
-    // Verificar que la URL contiene "goldbox"
+    // Verificar que la URL contiene "ref=nav_logo"
     const url = page.url();
     expect(url).toContain('ref=nav_logo');
   });
 
-  it('Debe verificar la presencia de un elemento específico usando un selector XPath', async () => {
+  it('Should verify the presence of a specific element using an XPath selector', async () => {
     // Navegar a la página de Ofertas directamente
     await page.goto('https://www.amazon.com.mx', {
       waitUntil: 'domcontentloaded',
@@ -58,7 +59,6 @@ describe('Pruebas de Amazon', () => {
     // Verificar la presencia de un elemento específico usando un selector XPath
     const xpath =
       "::-p-xpath(//div[1]//h2//span//span[2][contains(text(), 'Ofertas')])";
-    //*[@id="CardInstancekJbP_BN7kpQUwldrvs2GrQ"]/div[1]/h2/span/span[2]
     const element = await page.waitForSelector(xpath);
 
     // Verificar que el elemento está presente

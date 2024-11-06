@@ -36,6 +36,14 @@ El servidor se ejecutará en:
 http://localhost:3000
 ```
 
+## Pruebas
+
+Para ejecutar las pruebas, utiliza el siguiente comando:
+
+```sh
+npm test
+```
+
 ## Funcionalidad del HTML
 
 La vista HTML (login.ejs) proporciona un formulario de login simple. Los usuarios pueden ingresar su nombre de usuario y contraseña, y enviar el formulario. Los datos del formulario se manejan en el servidor y se pueden utilizar para la autenticación.
