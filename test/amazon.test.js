@@ -36,4 +36,32 @@ describe('Pruebas de Amazon', () => {
     });
     expect(h2).not.toBeNull();
   });
+  it('Debe hacer clic en el enlace de Amazon Prime usando un selector CSS', async () => {
+    // Esperar a que el enlace de Ofertas esté presente y hacer clic en él usando un selector CSS
+    await page.waitForSelector('a[href="/ref=nav_logo"]');
+    await page.click('a[href="/ref=nav_logo"]');
+
+    // Esperar a que la navegación se complete
+    await page.waitForSelector('img[alt="Accesorios"]');
+
+    // Verificar que la URL contiene "goldbox"
+    const url = page.url();
+    expect(url).toContain('ref=nav_logo');
+  });
+
+  it('Debe verificar la presencia de un elemento específico usando un selector XPath', async () => {
+    // Navegar a la página de Ofertas directamente
+    await page.goto('https://www.amazon.com.mx', {
+      waitUntil: 'domcontentloaded',
+    });
+
+    // Verificar la presencia de un elemento específico usando un selector XPath
+    const xpath =
+      "::-p-xpath(//div[1]//h2//span//span[2][contains(text(), 'Ofertas')])";
+    //*[@id="CardInstancekJbP_BN7kpQUwldrvs2GrQ"]/div[1]/h2/span/span[2]
+    const element = await page.waitForSelector(xpath);
+
+    // Verificar que el elemento está presente
+    expect(element).not.toBeNull();
+  });
 });
