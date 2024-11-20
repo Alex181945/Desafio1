@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-percy": "npx percy exec -- jest --testPathPattern='./tests-snapshots/__tests__/percy.test.js' "
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,12 @@
     "express": "^4.21.1",
     "first-project-node": "file:",
     "jest": "^29.7.0",
+    "jest-image-snapshot": "^6.4.0",
     "mocha": "^10.8.2",
     "puppeteer": "^23.7.0"
+  },
+  "devDependencies": {
+    "@percy/cli": "^1.30.2",
+    "@percy/puppeteer": "^2.0.2"
   }
 }
