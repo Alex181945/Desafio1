@@ -3,6 +3,10 @@ const puppeteer = require('puppeteer');
 let browser;
 let page;
 
+/**
+ * Configuración inicial antes de ejecutar las pruebas.
+ * Se lanza el navegador y se abre una nueva página.
+ */
 beforeAll(async () => {
   browser = await puppeteer.launch({ headless: false }); // Cambiar a true si no se requiere interfaz gráfica.
   page = await browser.newPage();
@@ -13,10 +17,24 @@ beforeAll(async () => {
   await page.setViewport({ width: 1920, height: 1080 });
 });
 
+/**
+ * Cierra el navegador después de ejecutar las pruebas.
+ */
 afterAll(async () => {
   await browser.close();
 });
 
+/**
+ * Prueba para verificar el precio del producto en el carrito.
+ *
+ * Esta prueba realiza los siguientes pasos:
+ * 1. Navega a la página del producto en Amazon.
+ * 2. Extrae el precio del producto de la página.
+ * 3. Agrega el producto al carrito.
+ * 4. Navega al carrito.
+ * 5. Extrae el precio del producto en el carrito.
+ * 6. Verifica que el precio del producto en la página coincida con el precio en el carrito.
+ */
 describe('Verificar precio del producto en el carrito', () => {
   it('Debería agregar el producto al carrito y verificar el precio', async () => {
     // Esperar que el precio esté visible y almacenarlo
