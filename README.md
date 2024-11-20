@@ -50,6 +50,12 @@ Ejecucion de pruebas de manera puntual
 npx jest nombre_del_archivo.test.js
 ```
 
+Ejecucion de pruebas percy
+
+```sh
+npm run test-percy
+```
+
 ## Funcionalidad del HTML
 
 La vista HTML (login.ejs) proporciona un formulario de login simple. Los usuarios pueden ingresar su nombre de usuario y contraseña, y enviar el formulario. Los datos del formulario se manejan en el servidor y se pueden utilizar para la autenticación.
