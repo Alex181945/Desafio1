@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test-percy": "npx percy exec -- jest --testPathPattern='./tests-snapshots/__tests__/percy.test.js' "
+    "test-percy": "npx percy exec -- jest --testPathPattern='./tests-snapshots/__tests__/percy.test.js' ",
+    "test-local-percy": "npx percy exec -- jest --testPathPattern='./tests-snapshots/__tests__/percy-local.test.js' "
   },
   "keywords": [],
   "author": "",
